@@ -1,6 +1,7 @@
 package top.ludonghuang.controller;
 
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.ludonghuang.entity.Resume;
@@ -12,7 +13,7 @@ import top.ludonghuang.utils.UserThreadLocal;
 import top.ludonghuang.vo.UserData;
 
 import java.util.Map;
-
+@Api(tags = "简历接口")
 @RestController
 @RequestMapping("/resume")
 public class ResumeController {

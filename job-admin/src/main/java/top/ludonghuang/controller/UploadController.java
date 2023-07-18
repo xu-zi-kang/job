@@ -1,5 +1,6 @@
 package top.ludonghuang.controller;
 
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,7 +12,7 @@ import top.ludonghuang.utils.UploadConfig;
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
-
+@Api(tags = "上传文件接口")
 @RestController
 public class UploadController {
 

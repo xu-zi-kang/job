@@ -1,6 +1,7 @@
 package top.ludonghuang.controller;
 
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.ludonghuang.entity.User;
@@ -10,7 +11,7 @@ import top.ludonghuang.service.UserService;
 import top.ludonghuang.utils.Result;
 
 import java.util.Map;
-
+@Api(tags = "管理员账号接口")
 @RestController
 @RequestMapping("/user")
 public class UserController {

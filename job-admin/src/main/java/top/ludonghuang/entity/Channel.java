@@ -1,9 +1,11 @@
 package top.ludonghuang.entity;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import top.ludonghuang.utils.Entity;
 import java.util.Date;
 
+@ApiModel(value = "导航栏")
 @Data
 public class Channel extends Entity {
 

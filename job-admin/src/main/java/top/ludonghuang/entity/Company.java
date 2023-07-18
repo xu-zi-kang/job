@@ -1,9 +1,11 @@
 package top.ludonghuang.entity;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import top.ludonghuang.utils.Entity;
 
 @Data
+@ApiModel(value = "企业账号")
 public class Company extends Entity {
 
 	private Integer id;

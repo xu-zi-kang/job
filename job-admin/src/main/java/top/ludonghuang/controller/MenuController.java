@@ -1,5 +1,6 @@
 package top.ludonghuang.controller;
 
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.ludonghuang.entity.Menu;
@@ -9,7 +10,7 @@ import top.ludonghuang.utils.Result;
 import top.ludonghuang.vo.UserData;
 
 import java.util.List;
-
+@Api(tags = "菜单接口")
 @RestController
 @RequestMapping("/menu")
 public class MenuController {

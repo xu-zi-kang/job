@@ -1,6 +1,7 @@
 package top.ludonghuang.controller;
 
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.ludonghuang.entity.Certificate;
@@ -15,6 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/certificate")
+@Api(tags = "证书接口")
 public class CertificateController {
 
     @Autowired

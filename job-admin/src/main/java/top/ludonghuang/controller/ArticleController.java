@@ -1,6 +1,8 @@
 package top.ludonghuang.controller;
 
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.ludonghuang.entity.Article;
@@ -15,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/article")
+@Api(tags = "文章接口")
 public class ArticleController {
 
     @Autowired
@@ -22,6 +25,7 @@ public class ArticleController {
     @Autowired
     private RedisUtil redisUtil;
 
+    @ApiOperation(value = "创建新文章")
     @PostMapping("/create")
     public Result create(@RequestBody Article article) {
         //获取登录用户的信息

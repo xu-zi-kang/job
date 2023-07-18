@@ -1,8 +1,9 @@
 package top.ludonghuang.entity;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import top.ludonghuang.utils.Entity;
-
+@ApiModel(value = "菜单")
 @Data
 public class Menu extends Entity {
 

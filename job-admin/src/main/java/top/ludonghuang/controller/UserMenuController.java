@@ -1,6 +1,7 @@
 package top.ludonghuang.controller;
 
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.ludonghuang.entity.UserMenu;
@@ -8,7 +9,7 @@ import top.ludonghuang.service.UserMenuService;
 import top.ludonghuang.utils.Result;
 
 import java.util.Map;
-
+@Api(tags = "账号菜单关联表接口")
 @RestController
 @RequestMapping("/userMenu")
 public class UserMenuController {

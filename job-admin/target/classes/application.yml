@@ -25,6 +25,9 @@ spring:
   jackson:
     date-format: yyyy-MM-dd
     time-zone: Asia/Shanghai
+#  mvc:
+#    pathmatch:
+#      matching-strategy: ANT_PATH_MATCHER
 
 # mybatis配置
 mybatis:

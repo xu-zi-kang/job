@@ -1,8 +1,9 @@
 package top.ludonghuang.entity;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import top.ludonghuang.utils.Entity;
-
+@ApiModel(value = "招聘信息")
 @Data
 public class Post extends Entity {
 

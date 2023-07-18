@@ -1,6 +1,7 @@
 package top.ludonghuang.controller;
 
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.ludonghuang.entity.Favor;
@@ -10,7 +11,7 @@ import top.ludonghuang.vo.UserData;
 
 import java.util.Date;
 import java.util.Map;
-
+@Api(tags = "职位收藏接口")
 @RestController
 @RequestMapping("/favor")
 public class FavorController {
