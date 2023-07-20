@@ -14,7 +14,8 @@ import top.ludonghuang.utils.Result;
 import top.ludonghuang.utils.UserThreadLocal;
 import top.ludonghuang.vo.UserData;
 
-import java.util.Map;
+import java.util.*;
+
 @Api(tags = "培训经历接口")
 @RestController
 @RequestMapping("/train")
@@ -66,30 +67,49 @@ public class TrainController {
     }
 
 
-
     @PostMapping("/query")
     public Map<String, Object> query(@RequestBody Train train) {
         UserData user = userDataService.getUser();
 
-        Resume resumeParam = resumeService.detail(user.getId());
-        if(resumeParam == null) {
+
+        List<Resume> resumeParam = resumeService.detail(user.getId());
+
+
+        if (resumeParam == null) {
             return Result.success(new PageInfo<>());
         }
 
-        train.setResumeId(resumeParam.getId());
+
+
+        Set<Integer> trainSet = new HashSet<>();
+        for (Resume resume : resumeParam) {
+            trainSet.add(resume.getId());
+
+        }
+
+        // 将 trainSet 设置到 train 属性中
+        train.setTrainSet(trainSet);
+
+
+
+
         PageInfo<Train> pageInfo = trainService.query(train);
+
         pageInfo.getList().forEach(item -> {
-            Resume resume = resumeService.detail(item.getResumeId());
-            item.setResume(resume);
+
+            Integer resumeId = item.getResumeId();
+            List<Resume> resume = resumeService.detail2(resumeId);
+
+            for (Resume resume1 : resume) {
+                item.setResume(resume1);
+            }
+
+
         });
+
+
         return Result.success(pageInfo);
     }
-
-
-
-
-
-
 
 
 }

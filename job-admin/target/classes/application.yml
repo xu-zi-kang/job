@@ -51,6 +51,6 @@ pagehelper:
   params: count=mysql
 
 file:
-  uploadFolder: D:/upload/job/
+  uploadFolder: C:/Users/yol/Documents/GitHub/job/upload/job/
   accessPath: /upload/**
   baseUrl: http://localhost:8888/job/upload/

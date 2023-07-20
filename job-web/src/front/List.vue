@@ -3,8 +3,10 @@
         <Header></Header>
         <div class="main mar-20">
             <el-breadcrumb separator="/">
+
                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                 <el-breadcrumb-item><a href="/">{{channel.name}}</a></el-breadcrumb-item>
+
             </el-breadcrumb>
         </div>
         <!-- 焦点区 -->

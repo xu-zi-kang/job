@@ -62,10 +62,18 @@ public class ResumeController {
         }
     }
 
+
+
+
+
+    //根据student_id查询resume信息
     @PostMapping("/detail")
     public Result detail(Integer id) {
         return Result.success(resumeService.detail(id));
     }
+
+
+
 
 
 

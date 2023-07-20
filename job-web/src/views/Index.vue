@@ -1,4 +1,5 @@
 <template>
+
     <el-container class="container">
         <Sidebar @handleMenuItem="handleMenuItem"></Sidebar>
         <el-container>
@@ -6,35 +7,38 @@
                 <Navbar></Navbar>
             </el-header>
             <el-main>
+
                 <el-breadcrumb separator-class="el-icon-arrow-right">
-                    <el-breadcrumb-item :to="{ path: '' }">首页</el-breadcrumb-item>
+
+                    <el-breadcrumb-item :to="{ path: '' }"><a href="/index">首页</a></el-breadcrumb-item>
                     <el-breadcrumb-item>{{menuName}}</el-breadcrumb-item>
+
                 </el-breadcrumb>
+<!--              <router-view class="rv"></router-view>-->
+
+<!--              <div v-if="ass === '/index'">-->
+<!--                <chart></chart>-->
+<!--              </div>-->
+
 
               <template v-if="aas === '/index'">
-
-
                 <div class="rv">
-
                     <chart></chart>
-
                 </div>
-
-
-
-
-
-
-
-
-
               </template>
+
+
               <template v-else>
                 <router-view class="rv"></router-view>
             </template>
+
+
+
             </el-main>
         </el-container>
     </el-container>
+
+
 </template>
 
 <script>
@@ -59,6 +63,19 @@
           console.log(this.$route)
         this.aas = this.$route.fullPath;
       },
+
+
+      watch: {
+        $route: {
+          handler(val,old_val){
+            console.log(val)
+            this.aas = val.fullPath;
+          },
+          immediate: false,
+          deep: true
+        }
+      },
+
 
 
       methods: {

@@ -71,7 +71,20 @@
             <if test="post != null and post != ''">and post = #{post}</if>
             <if test="salary != null and salary != ''">and salary = #{salary}</if>
             <if test="description != null and description != ''">and description = #{description}</if>
-            <if test="resumeId != null">and resume_id = #{resumeId}</if>
+
+
+<!--            <if test="resumeId != null">and resume_id = #{resumeId}</if>-->
+
+            <if test="experienceSet != null and experienceSet.size() > 0">
+                and resume_id IN
+                <foreach collection="experienceSet" item="experienceSet" open="(" separator="," close=")">
+                    #{experienceSet}
+                </foreach>
+            </if>
+
+
+
+
         </where>
     </sql>
 

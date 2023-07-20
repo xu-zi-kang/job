@@ -68,7 +68,17 @@
             <if test="city != null and city != ''">and city = #{city}</if>
             <if test="type != null and type != ''">and type = #{type}</if>
             <if test="industry != null and industry != ''">and industry = #{industry}</if>
-            <if test="resumeId != null">and resume_id = #{resumeId}</if>
+<!--            <if test="resumeId != null">and resume_id = #{resumeId}</if>-->
+
+            <if test="intentionSet != null and intentionSet.size() > 0">
+                and resume_id IN
+                <foreach collection="intentionSet" item="intentionSet" open="(" separator="," close=")">
+                    #{intentionSet}
+                </foreach>
+            </if>
+
+
+
         </where>
     </sql>
 

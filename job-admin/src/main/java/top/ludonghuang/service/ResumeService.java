@@ -8,6 +8,8 @@ import org.springframework.util.StringUtils;
 import top.ludonghuang.entity.Resume;
 import top.ludonghuang.mapper.ResumeMapper;
 
+import java.util.List;
+
 @Service
 public class ResumeService {
 
@@ -45,9 +47,14 @@ public class ResumeService {
         return new PageInfo<>(resumeMapper.query(resume));
     }
 
-    public Resume detail(Integer id) {
+    public List<Resume> detail(Integer id) {
         return resumeMapper.detail(id);
     }
+
+    public List<Resume> detail2(Integer id) {
+        return resumeMapper.detail2(id);
+    }
+
 
     public int count(Resume resume) {
         return resumeMapper.count(resume);

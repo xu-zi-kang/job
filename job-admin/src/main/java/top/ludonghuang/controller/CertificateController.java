@@ -12,7 +12,10 @@ import top.ludonghuang.service.UserDataService;
 import top.ludonghuang.utils.Result;
 import top.ludonghuang.vo.UserData;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/certificate")
@@ -64,15 +67,32 @@ public class CertificateController {
     @PostMapping("/query")
     public Map<String, Object> query(@RequestBody Certificate certificate) {
         UserData user = userDataService.getUser();
-        Resume resumeParam = resumeService.detail(user.getId());
+        List<Resume> resumeParam =  resumeService.detail(user.getId());
         if(resumeParam == null) {
             return Result.success(new PageInfo<>());
         }
-        certificate.setResumeId(resumeParam.getId());
+
+
+
+        Set<Integer> certificateSet = new HashSet<>();
+        for (Resume resume : resumeParam) {
+            certificateSet.add(resume.getId());
+        }
+
+        // 将 trainSet 设置到 train 属性中
+        certificate.setCertificateSet(certificateSet);
+
+
+
+
         PageInfo<Certificate> pageInfo = certificateService.query(certificate);
         pageInfo.getList().forEach(item -> {
-            Resume resume = resumeService.detail(item.getResumeId());
-            item.setResume(resume);
+
+            List<Resume> resume = resumeService.detail2(item.getResumeId());
+            for (Resume resume1 : resume) {
+                item.setResume(resume1);
+            }
+
         });
         return Result.success(pageInfo);
     }

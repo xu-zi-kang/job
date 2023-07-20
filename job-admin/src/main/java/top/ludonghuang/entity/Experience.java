@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import top.ludonghuang.utils.Entity;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @ApiModel(value = "实习经历")
 @Data
@@ -19,4 +21,7 @@ public class Experience extends Entity {
 	private Integer resumeId;
 
 	private Resume resume;
+
+	private Set<Integer> experienceSet = new HashSet<Integer>();
+
 }

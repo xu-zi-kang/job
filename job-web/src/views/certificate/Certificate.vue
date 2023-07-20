@@ -9,7 +9,8 @@
 
         <r-table ref="mutipleTable" :tableData="tableData" :tableCols="tableCols">
             <template slot="slot_resume" slot-scope="scope">
-                {{scope.data.resume.name}}
+              <span v-if="scope.data.resume">{{ scope.data.resume.name }}</span>
+              <span v-else>none</span>
             </template>
         </r-table>
         <r-pagination :page="page" :total="total" @handleCurrentChange="handleCurrentChange"></r-pagination>
@@ -78,6 +79,8 @@
             list(params) {
                 query(params).then(res => {
                     this.tableData = res.data;
+                  const emptyResumeData = res.data.filter(item => !item.resume);
+                  this.tableData = [...this.tableData, ...emptyResumeData];
                     this.total = res.total;
                 })
             },

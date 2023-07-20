@@ -2,7 +2,7 @@
     <el-aside width="200px">
         <div class="logo">
            <!-- <img src="../assets/images/logo.png">-->
-            <div style="margin-left: -55px">就业服务平台</div>
+            <div style="margin-left: -5px">就业工作预测服务平台</div>
         </div>
         <el-menu
                 background-color="#20262E"

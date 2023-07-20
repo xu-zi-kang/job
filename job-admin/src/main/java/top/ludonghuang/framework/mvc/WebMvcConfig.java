@@ -37,9 +37,10 @@ public class WebMvcConfig  implements WebMvcConfigurer {
     //添加拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(tokenInterceptor()).addPathPatterns("/job/**")
-                .excludePathPatterns("/login", "/upload/**", "/f/**","/job/swagger-ui.html","/doc.html","/job/swagger-resources","/job/webjars/**","/job/v2/**");
-        //.excludePathPatterns("/job/**");
+        registry.addInterceptor(tokenInterceptor()).addPathPatterns("/job/**").addPathPatterns("/**")
+       .excludePathPatterns("/login/**", "/upload/**", "/f/**","/doc.html","/swagger-resources","/webjars/**","/v2/**");
+        // .excludePathPatterns("/login/**", "/upload/**", "/f/**","/doc.html","/swagger-resources","/webjars/**","/v2/**","/resume/**","/train/**");
+
     }
 
     //使用CorsFilter解决跨域问题

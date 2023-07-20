@@ -55,13 +55,25 @@
 		select * from tb_certificate where id = #{id}
 	</select>
 
+
+
     <sql id="CertificateFindCriteria">
         <where>
             <if test="id != null">and id = #{id}</if>
             <if test="name != null and name != ''">and name like concat('%', #{name}, '%')</if>
             <if test="file != null and file != ''">and file = #{file}</if>
-            <if test="resumeId != null">and resume_id = #{resumeId}</if>
+<!--            <if test="resumeId != null">and resume_id = #{resumeId}</if>-->
+
+            <if test="certificateSet != null and certificateSet.size() > 0">
+                and resume_id IN
+                <foreach collection="certificateSet" item="certificateSet" open="(" separator="," close=")">
+                    #{certificateSet}
+                </foreach>
+            </if>
+
         </where>
     </sql>
+
+
 
 </mapper>

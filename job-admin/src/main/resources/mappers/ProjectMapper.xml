@@ -61,7 +61,16 @@
             <if test="id != null">and id = #{id}</if>
             <if test="name != null and name != ''">and name like concat('%', #{name}, '%')</if>
             <if test="description != null and description != ''">and description = #{description}</if>
-            <if test="resumeId != null">and resume_id = #{resumeId}</if>
+<!--            <if test="resumeId != null">and resume_id = #{resumeId}</if>-->
+
+            <if test="projectSet != null and projectSet.size() > 0">
+                and resume_id IN
+                <foreach collection="projectSet" item="projectSet" open="(" separator="," close=")">
+                    #{projectSet}
+                </foreach>
+            </if>
+
+
         </where>
     </sql>
 

@@ -14,6 +14,7 @@ import top.ludonghuang.utils.UserThreadLocal;
 import top.ludonghuang.vo.UserData;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -114,7 +115,13 @@ public class SendController {
         PageInfo<Send> pageInfo = sendService.query(send);
         pageInfo.getList().forEach(item -> {
             item.setCompany(companyService.detail(item.getCompanyId()));
-            item.setResume(resumeService.detail(item.getResumeId()));
+
+            List<Resume> resumes = resumeService.detail(item.getResumeId());
+            for (Resume resume : resumes) {
+                item.setResume(resume);
+            }
+
+
             item.setStudent(studentService.detail(item.getStudentId()));
             item.setPost(postService.detail(item.getPostId()));
         });
@@ -130,9 +137,18 @@ public class SendController {
         PageInfo<Send> pageInfo = sendService.query(send);
         pageInfo.getList().forEach(item -> {
             item.setCompany(companyService.detail(item.getCompanyId()));
-            item.setResume(resumeService.detail(item.getResumeId()));
+
+
+            List<Resume> resumes = resumeService.detail(item.getResumeId());
+            for (Resume resume : resumes) {
+                item.setResume(resume);
+            }
+
+
             item.setPost(postService.detail(item.getPostId()));
         });
         return Result.success(pageInfo);
     }
+
+
 }

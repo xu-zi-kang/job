@@ -23,6 +23,7 @@ public class Result {
         return new Result(Status.SUCCESS.getCode(), Status.SUCCESS.getMsg(), null);
     }
 
+
     public static Map<String, Object> success(PageInfo pageInfo) {
         HashMap<String, Object> map = new HashMap<>();
         map.put("code", Status.SUCCESS.getCode());
@@ -32,9 +33,13 @@ public class Result {
         return map;
     }
 
+
+
     public static Result success(Object data) {
         return new Result(Status.SUCCESS.getCode(), Status.SUCCESS.getMsg(), data);
     }
+
+
 
     public static Result error() {
         return new Result(Status.ERROR.getCode(), Status.ERROR.getMsg(), null);

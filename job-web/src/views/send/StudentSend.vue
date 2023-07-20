@@ -10,9 +10,11 @@
             <template slot="slot_company" slot-scope="scope">
                 {{scope.data.company.name}}
             </template>
-            <template slot="slot_resume" slot-scope="scope">
-                {{scope.data.resume.name}}
-            </template>
+
+<!--            <template slot="slot_resume" slot-scope="scope">-->
+<!--                {{scope.data.resume.name}}-->
+<!--            </template>-->
+
             <template slot="slot_status" slot-scope="scope">
                 <el-tag v-if="scope.data.status == 0">待查看</el-tag>
                 <el-tag v-if="scope.data.status == 1">已查看</el-tag>

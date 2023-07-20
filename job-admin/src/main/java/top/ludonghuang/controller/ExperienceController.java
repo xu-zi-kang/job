@@ -12,7 +12,11 @@ import top.ludonghuang.service.UserDataService;
 import top.ludonghuang.utils.Result;
 import top.ludonghuang.vo.UserData;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 @Api(tags = "实习经历接口")
 @RestController
 @RequestMapping("/experience")
@@ -63,15 +67,37 @@ public class ExperienceController {
     @PostMapping("/query")
     public Map<String, Object> query(@RequestBody Experience experience) {
         UserData user = userDataService.getUser();
-        Resume resumeParam = resumeService.detail(user.getId());
+        List<Resume> resumeParam = resumeService.detail(user.getId());
         if(resumeParam == null) {
             return Result.success(new PageInfo<>());
         }
-        experience.setResumeId(resumeParam.getId());
+
+
+        for (Resume resume : resumeParam) {
+            experience.setResumeId(resume.getId());
+        }
+
+
+        Set<Integer> experienceSet = new HashSet<>();
+        for (Resume resume : resumeParam) {
+            experienceSet.add(resume.getId());
+        }
+        // 将 trainSet 设置到 train 属性中
+        experience.setExperienceSet(experienceSet);
+
+
+
+
         PageInfo<Experience> pageInfo = experienceService.query(experience);
         pageInfo.getList().forEach(item -> {
-            Resume resume = resumeService.detail(item.getResumeId());
-            item.setResume(resume);
+
+            List<Resume> resume = resumeService.detail2(item.getResumeId());
+            for (Resume resume1 : resume) {
+                item.setResume(resume1);
+            }
+
+
+
         });
         return Result.success(pageInfo);
     }

@@ -44,6 +44,7 @@
 
 
 
+
     <select id="query" resultMap="Train">
         select * from tb_train
         <include refid="TrainFindCriteria"/>
@@ -51,10 +52,14 @@
 
 
 
+
+
     <select id="count" resultType="int">
         select count(1) from tb_train
         <include refid="TrainFindCriteria"/>
     </select>
+
+
 
 
     <select id="detail" resultMap="Train">
@@ -65,15 +70,25 @@
 
 
 
-
     <sql id="TrainFindCriteria">
         <where>
             <if test="id != null">and id = #{id}</if>
             <if test="company != null and company != ''">and company = #{company}</if>
             <if test="course != null and course != ''">and course like concat('%', #{course}, '%')</if>
-            <if test="resumeId != null">and resume_id = #{resumeId}</if>
+<!--            <if test="resumeId != null">and resume_id = #{resumeId}</if>-->
+
+            <if test="trainSet != null and trainSet.size() > 0">
+                and resume_id IN
+                <foreach collection="trainSet" item="trainSet" open="(" separator="," close=")">
+                    #{trainSet}
+                </foreach>
+            </if>
+
+
         </where>
     </sql>
+
+
 
 
 

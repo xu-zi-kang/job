@@ -17,4 +17,5 @@ public interface TrainMapper {
 	List<Train> detail(Integer id);
 
 	int count(Train train);
+
 }

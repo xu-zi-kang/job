@@ -13,6 +13,7 @@
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
     "echarts": "^5.4.2",
+    "echarts-wordcloud": "^2.1.0",
     "element-ui": "^2.15.6",
     "mavon-editor": "^2.9.1",
     "screenfull": "^5.1.0",

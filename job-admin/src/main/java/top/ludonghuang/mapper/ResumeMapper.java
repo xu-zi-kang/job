@@ -14,7 +14,12 @@ public interface ResumeMapper {
 
 	List<Resume> query(Resume resume);
 
-	Resume detail(Integer id);
+
+
+	List<Resume> detail(Integer id);
+
+	List<Resume> detail2(Integer id);
+
 
 	int count(Resume resume);
 }

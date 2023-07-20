@@ -4,7 +4,7 @@
 <mapper namespace="top.ludonghuang.mapper.ResumeMapper">
 
     <resultMap type="top.ludonghuang.entity.Resume" id="Resume">
-        <id column="id" property="id"/>
+        <id column="id" property="id" typeHandler="org.apache.ibatis.type.IntegerTypeHandler"/>
         <result column="name" property="name"/>
         <result column="job_status" property="jobStatus"/>
         <result column="evaluate" property="evaluate"/>
@@ -51,6 +51,8 @@
         <include refid="ResumeFindCriteria"/>
     </select>
 
+
+
     <select id="count" resultType="int">
         select count(1) from tb_resume
         <include refid="ResumeFindCriteria"/>
@@ -58,9 +60,16 @@
 
 
 
+
+
     <select id="detail" resultMap="Resume">
-		select * from tb_resume where id = #{id}
+		select * from tb_resume where student_id = #{id}
 	</select>
+
+    <select id="detail2" resultMap="Resume">
+        select * from tb_resume where id = #{id}
+    </select>
+
 
 
 
@@ -76,5 +85,10 @@
             <if test="status != null">and status = #{status}</if>
         </where>
     </sql>
+
+
+
+
+
 
 </mapper>

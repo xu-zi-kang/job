@@ -12,8 +12,12 @@ import top.ludonghuang.service.UserDataService;
 import top.ludonghuang.utils.Result;
 import top.ludonghuang.vo.UserData;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-@Api(tags = "岗位接口")
+import java.util.Set;
+
+@Api(tags = "求职意向接口")
 @RestController
 @RequestMapping("/intention")
 public class IntentionController {
@@ -63,15 +67,35 @@ public class IntentionController {
     @PostMapping("/query")
     public Map<String, Object> query(@RequestBody Intention intention) {
         UserData user = userDataService.getUser();
-        Resume resumeParam = resumeService.detail(user.getId());
+        List<Resume> resumeParam = resumeService.detail(user.getId());
         if(resumeParam == null) {
             return Result.success(new PageInfo<>());
         }
-        intention.setResumeId(resumeParam.getId());
+
+
+
+        Set<Integer> intentionSet = new HashSet<>();
+        for (Resume resume : resumeParam) {
+            intentionSet.add(resume.getId());
+        }
+
+        // 将 trainSet 设置到 train 属性中
+        intention.setIntentionSet(intentionSet);
+
+        for (Resume resume : resumeParam) {
+            intention.setResumeId(resume.getId());
+        }
+
+
+
         PageInfo<Intention> pageInfo = intentionService.query(intention);
         pageInfo.getList().forEach(item -> {
-            Resume resume = resumeService.detail(item.getResumeId());
-            item.setResume(resume);
+
+            List<Resume> resume = resumeService.detail2(item.getResumeId());
+            for (Resume resume1 : resume) {
+                item.setResume(resume1);
+            }
+
         });
         return Result.success(pageInfo);
     }

@@ -25,6 +25,7 @@
     import RPagination from "@/components/RPagination";
     import chart from '../../components/echarts/bar5.vue'
 
+
     export default {
         name: "Favor",
         components: {RPagination, RTable,chart},

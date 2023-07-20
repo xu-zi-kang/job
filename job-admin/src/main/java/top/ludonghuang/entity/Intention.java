@@ -3,7 +3,11 @@ package top.ludonghuang.entity;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import top.ludonghuang.utils.Entity;
-@ApiModel(value = "岗位")
+
+import java.util.HashSet;
+import java.util.Set;
+
+@ApiModel(value = "求职意向")
 @Data
 public class Intention extends Entity {
 
@@ -16,4 +20,5 @@ public class Intention extends Entity {
 	private Integer resumeId;
 
 	private Resume resume;
+	private Set<Integer> intentionSet = new HashSet<Integer>();
 }

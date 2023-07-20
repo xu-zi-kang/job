@@ -3,7 +3,7 @@
         <div class="login-header">
             <div class="login-main">
                 <div class="system-title">
-                    高校毕业生就业服务平台
+                    毕业生就业工作预测平台
                 </div>
             </div>
         </div>
