@@ -49,6 +49,11 @@ export const studentRouterMap = [
                 name: 'student_send',
                 component: () => import('@/views/send/StudentSend'),
             },
+            {
+                path: '/predict',
+                name: 'predict',
+                component: () => import('@/views/predict/Predict'),
+            },
         ]
     }
 ]

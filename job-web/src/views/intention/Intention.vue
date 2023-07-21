@@ -44,7 +44,8 @@
             return {
                 tableData: [],
                 tableCols: [
-                    {prop: 'id', label: 'ID', width: 80},
+                  {prop: 'id2', label: 'ID', width: 80},
+                  {prop: 'id', label: '系统编号', width: 80},
                     {prop: 'resumeId', label: '简历', slot: 'slot_resume'},
                     {prop: 'name', label: '名称'},
                     {prop: 'salary', label: '薪资要求'},
@@ -88,7 +89,14 @@
             },
             list(params) {
                 query(params).then(res => {
-                    this.tableData = res.data;
+                  //我使用map()方法遍历res.data，并为每个数据项创建一个新对象，其中的id值使用索引加1来表示。这样就可以将按照顺序排列的id显示在页面上，而不是使用数据库中的id数据。
+                  // 对数据进行处理
+                  this.tableData = res.data.map((item, index) => {
+                    return {
+                      ...item,
+                      id2: index + 1 // 使用索引加1作为新的id值
+                    };
+                  });
                     this.total = res.total;
                 })
             },

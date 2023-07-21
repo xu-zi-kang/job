@@ -3,7 +3,7 @@ package top.ludonghuang.entity;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import top.ludonghuang.utils.Entity;
-@ApiModel(value = "公司基本信息")
+@ApiModel(value = "字典管理")
 @Data
 public class Dict extends Entity {
 

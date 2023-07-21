@@ -1,6 +1,7 @@
 package top.ludonghuang.controller;
 
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.ludonghuang.entity.Dict;
@@ -11,6 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/dict")
+@Api(tags = "字典管理接口")
 public class DictController {
 
     @Autowired

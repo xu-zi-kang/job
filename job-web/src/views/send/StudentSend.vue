@@ -42,7 +42,8 @@
                 page: 1,
                 tableData: [],
                 tableCols: [
-                    {prop: 'id', label: 'ID', width: 80},
+                  {prop: 'id2', label: 'ID', width: 80},
+                  {prop: 'id', label: '系统编号', width: 80},
                     {prop: 'postId', label: '职位', slot: 'slot_post'},
                     {prop: 'companyId', label: '公司', slot: 'slot_company'},
                     {prop: 'resumeId', label: '简历名称', slot: 'slot_resume'},
@@ -63,7 +64,13 @@
             },
             list(params) {
                 student_send(params).then(res => {
-                    this.tableData = res.data;
+                  // 对数据进行处理
+                  this.tableData = res.data.map((item, index) => {
+                    return {
+                      ...item,
+                      id2: index + 1 // 使用索引加1作为新的id值
+                    };
+                  });
                     this.total = res.total;
                 })
             },
