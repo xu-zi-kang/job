@@ -30,10 +30,14 @@
         where id = #{id}
     </update>
 
+
+
     <select id="query" resultMap="Profession">
         select * from tb_profession
         <include refid="ProfessionFindCriteria"/>
     </select>
+
+
 
     <select id="count" resultType="int">
         select count(1) from tb_profession

@@ -58,11 +58,14 @@ public class ProfessionController {
         return Result.success(professionService.detail(id));
     }
 
+
     @PostMapping("/query")
     public Map<String, Object> query(@RequestBody Profession profession) {
         PageInfo<Profession> pageInfo = professionService.query(profession);
         return Result.success(pageInfo);
     }
+
+
 
     @PostMapping("/tree")
     public Result tree() {

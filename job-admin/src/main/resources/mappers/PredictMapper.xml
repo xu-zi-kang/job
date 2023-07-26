@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.ludonghuang.mapper.PredictMapper">
+
+    <resultMap type="top.ludonghuang.entity.Predict" id="Predict">
+        <id column="id" property="id"/>
+        <result column="sex" property="sex"/>
+        <result column="profession" property="profession"/>
+        <result column="job" property="job"/>
+        <result column="city" property="city"/>
+        <result column="company" property="company"/>
+        <result column="salary" property="salary"/>
+        <result column="score" property="score"/>
+    </resultMap>
+
+
+
+    <insert id="createPredict" parameterType="top.ludonghuang.entity.Predict">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into tb_predict(sex, profession, job, city,company, salary, score,student_id)
+        values (#{sex},#{profession},#{job},#{city},#{company},#{salary},#{score},#{studentId})
+    </insert>
+
+
+
+    <select id="query" resultMap="Predict">
+        select * from tb_predict
+        <include refid="PredictFindCriteria"/>
+    </select>
+
+
+    <sql id="PredictFindCriteria">
+        <where>
+            <if test="id != null">and id = #{id}</if>
+            <if test="sex != null and sex != ''">and sex = #{sex}</if>
+            <if test="profession != null and profession != ''">and profession = #{profession}</if>
+            <if test="job != null and job != ''">and job like concat('%', #{job}, '%')</if>
+            <if test="city != null and city != ''">and city = #{city}</if>
+            <if test="company != null and company != ''">and company = #{company}</if>
+            <if test="salary != null and salary != ''">and salary = #{salary}</if>
+            <if test="score != null and score != ''">and score = #{score}</if>
+            <if test="studentId != null">and student_id = #{studentId}</if>
+        </where>
+    </sql>
+
+
+
+    <delete id="delete">
+        delete from tb_predict where id = #{id}
+    </delete>
+
+
+    <update id="update">
+        update tb_predict set
+        <if test="sex != null and sex != ''">sex = #{sex},</if>
+        <if test="profession != null and profession != ''">profession = #{profession},</if>
+        <if test="job != null and job != ''">job = #{job},</if>
+        <if test="city != null and city != ''">city = #{city},</if>
+        <if test="company != null and company != ''">company = #{company},</if>
+        <if test="salary != null and salary != ''">salary = #{salary},</if>
+        <if test="score != null and score != ''">score = #{score}</if>
+        where id = #{id}
+    </update>
+
+
+    <select id="detail" resultMap="Predict">
+        select * from tb_predict where id = #{id}
+    </select>
+
+
+
+
+
+
+</mapper>

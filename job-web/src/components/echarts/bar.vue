@@ -1,7 +1,7 @@
 <!--柱状图-->
 <template>
     <div class="echarts-bar">
-        <div id="main" style="width: 600px;height:400px;"></div>
+        <div id="main1" style="width: 600px;height:400px;"></div>
     </div>
 </template>
 
@@ -30,7 +30,7 @@
 
 
               echarts.use([GridComponent, BarChart, CanvasRenderer, UniversalTransition]);
-              var chartDom = document.getElementById('main');
+              var chartDom = document.getElementById('main1');
               var myChart = echarts.init(chartDom, 'dark');
               var option;
 

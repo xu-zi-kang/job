@@ -40,12 +40,16 @@ public class ProfessionService {
         return professionMapper.update(profession);
     }
 
+
+
     public PageInfo<Profession> query(Profession profession) {
         if (profession != null && profession.getPage() != null) {
             PageHelper.startPage(profession.getPage(), profession.getLimit());
         }
         return new PageInfo<>(professionMapper.query(profession));
     }
+
+
 
     public List<Profession> tree() {
         return professionMapper.query(null);

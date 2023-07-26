@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import {update} from "@/api/train";
+    import {update} from "@/api/predict";
     import {query} from "@/api/resume";
     import RForm from "@/components/RForm";
 
@@ -22,25 +22,31 @@
         data() {
             return {
                 form: {
-                    id: '',
-                    resumeId: '',
-                    startDate: '',
-                    endDate: '',
-                    company: '',
-                    course: '',
+                  sex: '',
+                  profession: '',
+                  job: '',
+                  city: '',
+                  company: '',
+                  salary: '',
+                  score: '',
                 },
                 rules: {
-                    startDate: [{required: true, message: '必填项不能为空'}],
-                    endDate: [{required: true, message: '必填项不能为空'}],
-                    company: [{required: true, message: '必填项不能为空'}],
-                    course: [{required: true, message: '必填项不能为空'}],
+                  sex: [{required: true, message: '必填项不能为空'}],
+                  profession: [{required: true, message: '必填项不能为空'}],
+                  job: [{required: true, message: '必填项不能为空'}],
+                  city: [{required: true, message: '必填项不能为空'}],
+                  company: [{required: true, message: '必填项不能为空'}],
+                  salary: [{required: true, message: '必填项不能为空'}],
+                  score: [{required: true, message: '必填项不能为空'}],
                 },
                 items: [
-                    {type: 'select', label: '简历', prop: 'resumeId', name: 'resumeId', placeholder: '简历', options: []},
-                    {type: 'date', label: '开始时间', prop: 'startDate', name: 'startDate', placeholder: '开始时间'},
-                    {type: 'date', label: '结束时间', prop: 'endDate', name: 'endDate', placeholder: '结束时间'},
-                    {type: 'text', label: '培训机构', prop: 'company', name: 'company', placeholder: '培训机构'},
-                    {type: 'text', label: '培训课程', prop: 'course', name: 'course', placeholder: '培训课程'},
+                  {type: 'text', label: '性别', prop: 'sex', name: 'sex', placeholder: '性别'},
+                  {type: 'text', label: '所学专业', prop: 'profession', name: 'profession', placeholder: '所学专业'},
+                  {type: 'text', label: '期望的工作', prop: 'job', name: 'job', placeholder: '期望的工作岗位'},
+                  {type: 'text', label: '期望的城市', prop: 'city', name: 'city', placeholder: '期望发展的城市'},
+                  {type: 'text', label: '期望的公司', prop: 'company', name: 'company', placeholder: '期望的公司'},
+                  {type: 'text', label: '期望的薪资', prop: 'salary', name: 'salary', placeholder: '期望的薪资'},
+                  {type: 'text', label: '专业课分数', prop: 'score', name: 'score', placeholder: '专业课分数'},
                 ]
             }
         },

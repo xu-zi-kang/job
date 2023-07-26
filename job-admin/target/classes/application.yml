@@ -36,6 +36,19 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+#mybatisplus配置
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix:
+      id-type: auto
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mappers/*.xml
+  type-aliases-package: top.ludonghuang.entity
+
+
 # 日志打印
 logging:
   level:

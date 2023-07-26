@@ -36,9 +36,14 @@ public class TrainService {
         return row;
     }
 
+
+
     public int delete(Integer id) {
         return trainMapper.delete(id);
     }
+
+
+
 
     public int update(Train train) {
         return trainMapper.update(train);

@@ -46,10 +46,13 @@
         where id = #{id}
     </update>
 
+
+
     <select id="query" resultMap="Resume">
         select * from tb_resume
         <include refid="ResumeFindCriteria"/>
     </select>
+
 
 
 

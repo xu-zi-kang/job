@@ -29,6 +29,8 @@ public class TrainController {
     private UserDataService userDataService;
 
 
+
+
     @PostMapping("/create")
     public Result create(@RequestBody Train train) {
 
@@ -41,6 +43,7 @@ public class TrainController {
     }
 
 
+
     @PostMapping("/delete")
     public Result delete(String ids) {
         int flag = trainService.delete(ids);
@@ -50,6 +53,8 @@ public class TrainController {
             return Result.error();
         }
     }
+
+
 
     @PostMapping("/update")
     public Result update(@RequestBody Train train) {

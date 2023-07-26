@@ -68,7 +68,7 @@ public class ProjectController {
     public Map<String, Object> query(@RequestBody Project project) {
         UserData user = userDataService.getUser();
         List<Resume> resumeParam = resumeService.detail(user.getId());
-        if(resumeParam == null) {
+        if (resumeParam == null) {
             return Result.success(new PageInfo<>());
         }
 
@@ -82,6 +82,9 @@ public class ProjectController {
         project.setProjectSet(projectSet);
 
 
+        //project.setResumeId(user.getId());
+
+
 
         PageInfo<Project> pageInfo = projectService.query(project);
         pageInfo.getList().forEach(item -> {
@@ -93,8 +96,6 @@ public class ProjectController {
         });
         return Result.success(pageInfo);
     }
-
-
 
 
 }

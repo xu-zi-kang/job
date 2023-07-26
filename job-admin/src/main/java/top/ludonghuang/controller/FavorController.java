@@ -88,6 +88,9 @@ public class FavorController {
 
     @PostMapping("/query")
     public Map<String, Object> query(@RequestBody Favor favor) {
+        UserData userData = userDataService.getUser();
+        favor.setStudentId(userData.getId());
+
         PageInfo<Favor> pageInfo = favorService.query(favor);
         pageInfo.getList().forEach(item -> {
             item.setCompany(companyService.detail(item.getCompanyId()));
