@@ -59,10 +59,18 @@ public class PostController {
         }
     }
 
+
     @PostMapping("/detail")
     public Result detail(Integer id) {
         return Result.success(postService.detail(id));
     }
+
+
+    @PostMapping("/detail3")
+    public Result detail3(Integer id) {
+        return Result.success(postService.detail(id));
+    }
+
 
     @PostMapping("/query")
     public Map<String, Object> query(@RequestBody Post post) {
@@ -71,5 +79,11 @@ public class PostController {
         PageInfo<Post> pageInfo = postService.query(post);
         return Result.success(pageInfo);
     }
+
+
+
+
+
+
 
 }

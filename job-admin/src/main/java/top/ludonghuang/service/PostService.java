@@ -40,6 +40,8 @@ public class PostService {
         return postMapper.update(post);
     }
 
+
+
     public PageInfo<Post> query(Post post) {
         if (post != null && post.getPage() != null) {
             PageHelper.startPage(post.getPage(), post.getLimit());
@@ -47,9 +49,14 @@ public class PostService {
         return new PageInfo<Post>(postMapper.query(post));
     }
 
+
+
+
     public Post detail(Integer id) {
         return postMapper.detail(id);
     }
+
+
 
     public int count(Post post) {
         return postMapper.count(post);

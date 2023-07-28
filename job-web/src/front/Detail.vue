@@ -26,6 +26,7 @@
                                 <span>作者：{{article.author}}</span>
                                 <span>浏览量：{{article.views}}</span>
                             </div>
+
                             <div class="txt">
                                 <mavon-editor :value="article.content"
                                               :toolbarsFlag="false"

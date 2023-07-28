@@ -24,6 +24,7 @@ export function del(ids) {
     })
 }
 
+
 export function detail(id) {
     return request({
         url: 'predict/detail',
@@ -31,6 +32,7 @@ export function detail(id) {
         params: {"id": id}
     })
 }
+
 
 export function query(data) {
     return request({

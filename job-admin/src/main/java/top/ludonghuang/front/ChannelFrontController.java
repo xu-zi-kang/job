@@ -18,10 +18,22 @@ public class ChannelFrontController {
     @Autowired
     private ChannelService channelService;
 
+
+
+    /**
+     * @Description: 文章详情
+     * @Param: [id]
+     * @Return: top.ludonghuang.utils.Result
+     * @Author: yol
+     * @Date: 2023/7/27 9:24
+     */
     @PostMapping("/detail")
     public Result detail(Integer id) {
         return Result.success(channelService.detail(id));
     }
+
+
+
 
     @PostMapping("tree")
     public Result tree(@RequestBody Channel channel) {

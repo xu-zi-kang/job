@@ -8,21 +8,25 @@
             <i class="el-icon-full-screen" @click="handleFullScreen"></i>
             <el-dropdown @command="handleCommand">
             <span class="el-dropdown-link">
-                {{account}}<i class="el-icon-caret-bottom"></i>
+                {{name}}<i class="el-icon-caret-bottom"></i>
             </span>
                 <el-dropdown-menu slot="dropdown">
+
                     <el-dropdown-item command="home">
                         <i class="el-icon-s-home"></i>
                         网站首页
                     </el-dropdown-item>
+
                     <el-dropdown-item command="password">
                         <i class="el-icon-edit"></i>
                         修改密码
                     </el-dropdown-item>
+
                     <el-dropdown-item command="logout">
                         <i class="el-icon-back"></i>
                         退出登录
                     </el-dropdown-item>
+
                 </el-dropdown-menu>
             </el-dropdown>
         </div>
@@ -33,11 +37,17 @@
     import screenfull from "screenfull";
     import local from "../store/local";
 
+
     export default {
         name: "Navbar",
         data() {
             return {
-                account: local.getUserInfo().account
+                account: local.getUserInfo().account,
+                name: local.getUserInfo().name
+
+
+
+
             }
         },
         methods: {
@@ -55,6 +65,15 @@
                         this.$router.push('/');
                     })
                 }
+
+
+              if (type === 'password') {
+                  this.$router.push('/edit2');
+              }
+
+
+
+
             }
         }
     }

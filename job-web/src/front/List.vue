@@ -17,6 +17,8 @@
                         <div slot="header" class="clearfix">
                             <span>文章列表</span>
                         </div>
+
+
                         <ul class="list">
                             <li v-for="(item,index) in articles.slice(0,8)" :key="index">
                                 <router-link :to="`/detail/${item.id}`" target="_blank">
@@ -25,6 +27,9 @@
                                 <p>{{item.summary}}</p>
                             </li>
                         </ul>
+
+
+
                         <el-pagination
                                 background
                                 layout="prev, pager, next"

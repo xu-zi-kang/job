@@ -17,6 +17,10 @@ public interface PostMapper {
 
 	Post detail(Integer id);
 
+
+
+
+
 	int count(Post post);
 
 	//根据公司查询公司对应的职位信息

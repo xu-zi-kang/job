@@ -63,10 +63,10 @@
         <if test="email != null and email != ''">email = #{email},</if>
         <if test="addr != null and addr != ''">addr = #{addr},</if>
         <if test="url != null and url != ''">url = #{url},</if>
-        <if test="size != null and size != ''">size = #{size},</if>
-        <if test="type != null and type != ''">type = #{type},</if>
-        <if test="logo != null and logo != ''">logo = #{logo},</if>
-        <if test="description != null and description != ''">description = #{description}</if>
+        <if test="size != null and size != ''">size = #{size}</if>
+<!--        <if test="type != null and type != ''">type = #{type},</if>-->
+<!--        <if test="logo != null and logo != ''">logo = #{logo},</if>-->
+<!--        <if test="description != null and description != ''">description = #{description}</if>-->
         where id = #{id}
     </update>
 

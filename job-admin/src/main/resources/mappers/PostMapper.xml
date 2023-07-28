@@ -56,6 +56,8 @@
 		select * from tb_post where id = #{id}
 	</select>
 
+
+
     <sql id="PostFindCriteria">
         <where>
             <if test="id != null">and id = #{id}</if>
@@ -66,6 +68,9 @@
             <if test="companyId != null">and company_id = #{companyId}</if>
         </where>
     </sql>
+
+
+
 
     <select id="getPostList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
         select
@@ -78,4 +83,7 @@
             and tb_post.name like concat('%',#{name},'%')
         </if>
     </select>
+
+
+
 </mapper>

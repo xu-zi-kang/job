@@ -76,9 +76,17 @@
         <include refid="ArticleFindCriteria"/>
     </select>
 
+<!--    按id查-->
     <select id="detail" resultMap="Article">
 		select * from tb_article where id = #{id}
 	</select>
+
+<!--按title查-->
+    <select id="detail2" resultMap="Article">
+        select * from tb_article where title = #{title}
+    </select>
+
+
 
     <sql id="ArticleFindCriteria">
         <where>
@@ -95,9 +103,13 @@
         </where>
     </sql>
 
+
     <select id="getArticlesByChannelId" resultMap="Article">
 		select tb_article.* from tb_article,(
 		select * from tb_channel where id = #{channelId} or parent_id = #{channelId}
 		) B where tb_article.channel_id = B.id
 	</select>
+
+
+
 </mapper>

@@ -49,6 +49,14 @@ public class ArticleService {
         return articleMapper.detail(id);
     }
 
+
+    public Article detail2(String title) {
+        return articleMapper.detail2(title);
+    }
+
+
+
+
     public int count(Article article) {
         return articleMapper.count(article);
     }

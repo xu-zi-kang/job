@@ -16,6 +16,8 @@ public interface ArticleMapper {
 
 	Article detail(Integer id);
 
+	Article detail2(String title);
+
 	int count(Article article);
 
 	List<Article> getArticlesByChannelId(Integer channelId);

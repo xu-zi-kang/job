@@ -50,6 +50,7 @@
                 ]
             }
         },
+
         methods: {
             save() {
                 let flag = this.$refs['myForm'].validateForm();

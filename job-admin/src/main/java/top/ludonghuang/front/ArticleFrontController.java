@@ -22,6 +22,15 @@ public class ArticleFrontController {
     @Autowired
     private RedisTemplate redisTemplate;
 
+
+
+/**
+ * @Description: 文章详情,按id查
+ * @Param: [id]
+ * @Return: top.ludonghuang.utils.Result
+ * @Author: yol
+ * @Date: 2023/7/27 9:25
+ */
     @PostMapping("/detail")
     public Result detail(Integer id) {
         //每点击一次浏览量加一（每调用一次方法，浏览量加一）
@@ -34,6 +43,35 @@ public class ArticleFrontController {
         }
         return Result.success(article);
     }
+
+
+
+
+
+    /**
+     * @Description: 文章详情,按title查
+     * @Param: [id]
+     * @Return: top.ludonghuang.utils.Result
+     * @Author: yol
+     * @Date: 2023/7/27 9:25
+     */
+    @PostMapping("/detail2")
+    public Result detail2(String title) {
+        //每点击一次浏览量加一（每调用一次方法，浏览量加一）
+        Double views = redisTemplate.opsForZSet().incrementScore("views", title, 1);
+        Article article = articleService.detail2(title);
+        if(views != null) {
+            article.setViews(views.intValue());
+        } else {
+            article.setViews(0);
+        }
+        return Result.success(article);
+    }
+
+
+
+
+
 
     @PostMapping("/query")
     public Map<String, Object> query(@RequestBody Article article) {

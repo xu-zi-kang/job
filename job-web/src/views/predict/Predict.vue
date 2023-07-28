@@ -6,10 +6,11 @@
       <el-button size="small" type="primary" icon="el-icon-edit" @click="update">修改问卷</el-button>
       <el-button size="small" type="danger" icon="el-icon-delete" @click="del">删除问卷</el-button>
     </div>
-
+    <br>
     <div class="centered-text">
       <div class="larger-font hupo-font green-color">调查问卷内容</div>
     </div>
+    <br>
 
     <r-table ref="mutipleTable" :tableData="tableData" :tableCols="tableCols">
       <template slot="slot_resume" slot-scope="scope">
@@ -22,14 +23,18 @@
 
     <Add v-if="add.visible" :param="add"></Add>
     <Edit v-if="edit.visible" :param="edit"></Edit>
-
-
+<br>
+    <div>tips: 调查问卷数据越多,预测结果更精确</div>
+    <br><br><br><br><br>
     <div class="centered-text">
-    <el-button class="larger-font2" type="primary" @click="showChart">点击进行职业预测</el-button>
+      <el-button class="larger-font2" type="primary" @click="showChart" :disabled="isLoading">
+        {{ isLoading ? '正在预测职业...' : '点击进行职业预测' }}
+      </el-button>
     </div>
-    <chart v-if="showChartFlag"></chart>
-
-    <post-list v-if="showChartFlag"></post-list>
+    <br><br><br>
+    <chart v-if="showChartFlag && !isLoading"></chart>
+    <br><br>
+    <post-list v-if="showChartFlag && !isLoading"></post-list>
 
     <!-- 其他组件内容 -->
     <!-- <iframe src="https://yol.homes" width="1200px" height="800px"></iframe> -->
@@ -90,7 +95,8 @@ export default {
         callback: this.search,
         form: null
       },
-      showChartFlag: false
+      showChartFlag: false,
+      isLoading: false
     };
   },
   mounted() {
@@ -149,7 +155,11 @@ export default {
       }
     },
     showChart() {
-      this.showChartFlag = true;
+      this.isLoading = true;
+      setTimeout(() => {
+        this.showChartFlag = true;
+        this.isLoading = false;
+      }, 500); // 模拟职业预测的耗时
     }
   }
 };
@@ -161,12 +171,11 @@ export default {
 }
 
 .larger-font {
-  font-size: 60px;
-  /* 调整字体大小的数值 */
+  font-size: 60px; /* 调整字体大小的数值 */
 }
+
 .larger-font2 {
-  font-size: 30px;
-  /* 调整字体大小的数值 */
+  font-size: 30px; /* 调整字体大小的数值 */
 }
 
 .kaiti-font {

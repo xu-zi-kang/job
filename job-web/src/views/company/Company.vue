@@ -3,10 +3,14 @@
         <r-query-form :form="form" :items="items" @search="search"></r-query-form>
         <div class="btn-panel">
             <el-button size="small" type="danger" icon="el-icon-delete" @click="del">删除</el-button>
+          <el-button size="small" type="primary" icon="el-icon-edit" @click="update">修改</el-button>
         </div>
         <r-table ref="mutipleTable" :tableData="tableData" :tableCols="tableCols">
         </r-table>
         <r-pagination :page="page" :total="total" @handleCurrentChange="handleCurrentChange"></r-pagination>
+
+      <Edit v-if="edit.visible" :param="edit"></Edit>
+
     </div>
 </template>
 
@@ -16,10 +20,11 @@
     import RPagination from "@/components/RPagination";
     import {message} from "@/utils/message";
     import RQueryForm from "@/components/RQueryForm";
+    import Edit from "../company/Edit.vue";
 
     export default {
         name: "Company",
-        components: {RQueryForm, RPagination, RTable},
+        components: {Edit,RQueryForm, RPagination, RTable},
         data() {
             return {
                 total: 0,
@@ -43,6 +48,12 @@
                     {type: 'text', label: '名称', name: 'name', placeholder: '按名称查询'},
                     {type: 'text', label: '联系人', name: 'contact', placeholder: '按联系人查询'},
                 ],
+              edit: {
+                visible: false,
+                close: this.close,
+                callback: this.search,
+                form: null
+              }
             }
         },
         mounted() {
@@ -64,6 +75,18 @@
                     this.total = res.total;
                 })
             },
+          update() {
+            let selections = this.$refs['mutipleTable'].selection;
+            if (selections.length == 1) {
+              this.edit.visible = true;
+              this.edit.form = selections[0];
+            } else {
+              this.$message.warning("请选择一条数据进行修改");
+            }
+          },
+          close() {
+            this.edit.visible = false;
+          },
             del() {
                 let selection = this.$refs['mutipleTable'].selection;
                 if (selection.length > 0) {

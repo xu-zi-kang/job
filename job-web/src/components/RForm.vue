@@ -74,8 +74,7 @@
             </template>
             <el-row>
                 <el-form-item>
-                    <el-button size="small" icon="el-icon-refresh-right" @click="resetField" type="primary">重置
-                    </el-button>
+                    <el-button size="small" icon="el-icon-refresh-right" @click="resetField" type="primary">重置</el-button>
                     <el-button size="small" icon="el-icon-s-claim" @click="save" type="primary">保存</el-button>
                 </el-form-item>
             </el-row>

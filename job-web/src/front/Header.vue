@@ -3,7 +3,9 @@
         <!-- 顶部 -->
         <div class="top">
             <div class="main">
+              <a href="/">
                 <img src="../assets/images/logo-title.png" width="500px">
+              </a>
                 <span class="reg-login" v-if="!loginState">
                     <router-link to="/register">注册</router-link>
                     <span> | </span>

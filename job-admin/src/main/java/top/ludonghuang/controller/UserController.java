@@ -19,6 +19,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     @PostMapping("/create")
     public Result create(@RequestBody User user) {
         int row = userService.create(user);
@@ -28,6 +29,7 @@ public class UserController {
             return Result.error();
         }
     }
+
 
     @PostMapping("/delete")
     public Result delete(String ids) {
@@ -61,4 +63,5 @@ public class UserController {
         User user = userService.detail(id);
         return Result.success(user);
     }
+
 }

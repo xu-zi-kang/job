@@ -2,7 +2,7 @@
     <el-aside width="200px">
         <div class="logo">
            <!-- <img src="../assets/images/logo.png">-->
-            <div style="margin-left: -5px">就业工作预测服务平台</div>
+          <div style="margin-left: -5px"><a href="/index" class="custom-link">就业工作预测服务平台</a></div>
         </div>
         <el-menu
                 background-color="#20262E"
@@ -74,6 +74,11 @@
         height: 40px;
         left: 12px;
         top: 8px;
+    }
+
+    .custom-link {
+      color: white;
+      text-decoration: none;
     }
 
     .el-menu-item {

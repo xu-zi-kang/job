@@ -26,10 +26,31 @@ const constantRouterMap = [
         component: () => import('@/front/Detail')
     },
     {
+        path: '/detail3/:id',
+        name: 'detail',
+        component: () => import('@/front/Detail2')
+    },
+
+    {
         path: '/login',
         name: 'login',
         component: () => import('@/views/Login')
     },
+
+
+    {
+        path: '/edit',
+        name: 'edit',
+        component: () => import('@/views/company/CompanyInfo2')
+    },
+
+    {
+        path: '/edit2',
+        name: 'edit2',
+        component: () => import('@/views/student/StudentInfo2')
+    },
+
+
     {
         path: '/register',
         name: 'register',

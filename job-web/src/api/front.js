@@ -16,6 +16,27 @@ export function article_detail(id) {
     })
 }
 
+
+export function article_detail2(title) {
+    return request({
+        url: 'f/article/detail2',
+        method: 'post',
+        params: {"title": title}
+    })
+}
+
+
+// 按id查询职业
+export function post_detail(id) {
+    return request({
+        url: 'post/detail3',
+        method: 'post',
+        params: {"id": id}
+    })
+}
+
+
+
 export function article_query(data) {
     return request({
         url: 'f/article/query',
@@ -39,6 +60,9 @@ export function post_query(data) {
         data: data
     })
 }
+
+
+
 
 export function student_create(data) {
     return request({

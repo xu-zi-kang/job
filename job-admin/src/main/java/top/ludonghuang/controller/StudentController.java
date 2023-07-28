@@ -44,6 +44,7 @@ public class StudentController {
         }
     }
 
+
     @PostMapping("/update")
     public Result update(@RequestBody Student student) {
         int flag = studentService.update(student);
@@ -53,6 +54,7 @@ public class StudentController {
             return Result.error();
         }
     }
+
 
     @PostMapping("/detail")
     public Result detail(Integer id) {
