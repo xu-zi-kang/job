@@ -1,6 +1,29 @@
-# job
- 大学生职业预测系统
+
+
+## 开箱即用的大学生职业预测系统
+
+
+<p align="center">
+   <a target="_blank" href="https://github.com/yx159247/MP_take_out">
+      <img src="https://img.shields.io/hexpm/l/plug.svg"/>
+      <img src="https://img.shields.io/badge/JDK-1.8+-green.svg"/>
+      <img src="https://img.shields.io/badge/springboot-2.7.1-green"/>
+      <img src="https://img.shields.io/badge/vue-2.6.11-green"/>
+      <img src="https://img.shields.io/badge/mysql-8.0.29-green"/>
+      <img src="https://img.shields.io/badge/mybatis--plus-3.5.2-green"/>
+      <img src="https://img.shields.io/badge/redis-6.x-green"/>
+      <img src="https://img.shields.io/badge/minio-8.3.7-green"/>
+      <img src="https://img.shields.io/badge/quarz-2.3.2-green"/>
+      <img src="https://img.shields.io/badge/shiro-1.9.0-green"/>
+      <img src="https://img.shields.io/badge/easypoi-4.1.0-green"/>
+      <img src="https://img.shields.io/badge/knife4j-2.0.9-green"/>
+   </a>
+</p>
+
+
+
  ![image](https://github.com/xu-zi-kang/job/assets/108520582/f548d009-cc1f-493c-8c5d-078b521c3536)
+
 
 </div>
 
